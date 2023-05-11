@@ -72,58 +72,44 @@ const Adorno = styled.div`
    
 `
 const ContImg = styled.div`
-    width: 80%;
+    
     display: flex;
-    flex-wrap: nowrap;
-   /*  position: relative; */
+    flex-wrap: wrap;
+    text-align: center;
+    margin: 20px auto;
+    
+   
+`
+const Cont1Img = styled.div`
+    height: 270px;
+    background-color: #e0e0e0;
+    display: flex;
+    flex-wrap: wrap;
     text-align: center;
     margin: 0px auto;
+    justify-content: center;
+    border-radius: 2px;
+    padding: 10px;
+    box-shadow: 0px 0px 5px 3px #d8d8d8;
+    
    
 `
 const Cuadrado1 = styled.div`
-    /* margin-top: 50px;
-    border-radius: 10px;
-    background-color: brown;
-    height: 200px;
-    width: 200px;
-    box-shadow: 0px 5px 15px 0px rgba(209,209,209,1);
-    :hover{
-        z-index: 99;
-    } */
-
-
+    margin-top: 5%;
+    border-radius: 2px;
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    height: 70%;
+    justify-content: center;
+    width: 90%;
+    box-shadow: 0px 0px 2px 1px rgba(209,209,209,1);
 `
 
-const Cuadrado2 = styled.div`
-    /* background-color: yellow;
-    height: 190px;
-    width: 190px;
-    margin-top: 55px;
-    margin-left: -55px;
-    box-shadow: 0px 5px 15px 0px #b9c491;
-    border-radius: 5px;
-     :hover{
-        z-index: 99;
-    } */
 
-
+const ParrafoImagen = styled.p`
+    font-family: monospace;
+    text-align: left;
+    padding: 5px;
 `
-
-const Cuadrado3 = styled.div`
-    /* background-color: #979381;
-    height:180px;
-    border-radius: 15px;
-    width:180px;
-    margin-top: 60px;
-    margin-left: -50px;
-    box-shadow: 0px 5px 15px 0px rgba(209,209,209,1);
-     :hover{
-        z-index: 99;
-    } */
-
-
-`
-
 
 const About = () => {
     return (<>
@@ -138,9 +124,21 @@ const About = () => {
             </ContAbout>
 
             <ContImg>
-                <Cuadrado1 />
-                <Cuadrado2 />
-                <Cuadrado3 />
+                <Cont1Img style={{ width: "45%" }}>
+                    <Cuadrado1 />
+                    <ParrafoImagen>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, officiis.</ParrafoImagen>
+                </Cont1Img>
+
+                <Cont1Img style={{ width: "45%" }}>
+                    <Cuadrado1 />
+                    <ParrafoImagen>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, officiis.</ParrafoImagen>
+                </Cont1Img>
+
+                <Cont1Img style={{ width: "95%", marginTop: "20px" }}>
+                    <Cuadrado1 />
+                    <ParrafoImagen style={{ marginLeft: "3%", width: "90%" }} >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, officiis.</ParrafoImagen>
+                </Cont1Img>
+
             </ContImg>
 
         </Contenedor>
