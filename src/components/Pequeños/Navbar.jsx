@@ -61,7 +61,7 @@ const SeccionesUl = styled.ul`
     transition: all .5s;
     margin: 0;
     padding: 0;
-
+    z-index: 10;
     @media (min-width:20.00em) {     
     
     
@@ -94,6 +94,7 @@ const BarBtn = styled.label`
     padding: 10px;
     border-radius: 25%;
     background-color: rgba(247, 247, 247, 0.5);
+
     :hover{
         background-color: transparent;
         transition: all .3s;
@@ -118,6 +119,7 @@ const BarBtn = styled.label`
 
 
 const StyledLi = styled.li`
+    z-index: 10;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: block;
     line-height: 30px;
@@ -245,10 +247,10 @@ const Navbar = () => {
       </BarBtn>
       <SeccionesUl>
         <StyledLi isActive={isActive}><StyledLink href="#" activo> Inicio </StyledLink></StyledLi>
-        <StyledLi isActive={isActive}><StyledLink href="#"> About Us </StyledLink></StyledLi>
-        <StyledLi isActive={isActive}><StyledLink href="#"> Catálogo</StyledLink></StyledLi>
-        <StyledLi isActive={isActive}><StyledLink href="#"> Talleres</StyledLink></StyledLi>
-        <StyledLi isActive={isActive}> <StyledLink href="#">Contactos</StyledLink></StyledLi>
+        <StyledLi isActive={isActive}><StyledLink href="#">About Us</StyledLink></StyledLi>
+        <StyledLi isActive={isActive}><StyledLink href="#">Catálogo</StyledLink></StyledLi>
+        <StyledLi isActive={isActive}><StyledLink href="#">Talleres</StyledLink></StyledLi>
+        <StyledLi isActive={isActive}> <StyledLink href="#">Contacto</StyledLink></StyledLi>
       </SeccionesUl>
     </Contenedor>
 
