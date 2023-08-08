@@ -1,28 +1,96 @@
 import styled, { css } from "styled-components"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import "../../Assets/fonts.css"
 
 
-const Contenedor = styled.nav`
-
-   display: flex;
-   height: 15vh;
-   width: 100%;
-   justify-content: space-between;
-   align-items: center;
-  box-shadow: 0px 2px 10px 2px rgba(209,209,209,1);
-   /*  background-color: #b9b9b9;
- */
-  background: rgb(255,255,255);
-  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(236,227,227,1) 52%, rgba(193,181,181,0.9472163865546218) 98%); border-bottom-right-radius:1px;
-    border-bottom-left-radius:1px;
 
 
-   position: relative;
-    z-index: 1;
+const StyledLink = styled.a`
+    text-decoration: none;
+    text-shadow: 2px 2px 20px #000000;
+    color: white;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-family: 'Cutive Mono', monospace;
+    transition: all .3s;
+    letter-spacing: 2px;
+    color: ${({ active }) => (active ? "#ffc0cb" : "white")};
+    text-shadow: ${({ active }) => (active ? "text-shadow: 1px 1px 1px #FF6F20" : "")};
+    cursor: pointer;
+    :hover{
+
+        color: #ffc0cb;
+    }
+
+     @media (min-width:20.00em) {
+    
+    
+  }
+  @media (min-width:37.500em) {
+    
+   
+    
+  }
+  @media(min-width:56rem) {
+    
+    
     
 
+  }
+  @media(min-width:61.93em) {
+
+  }
+`
+const StyledTitulos = styled.h1`
+    white-space: nowrap;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    letter-spacing: 1px;
+    font-family: 'Cutive Mono', monospace;
+   @media (min-width:20.00em) {     
+      font-size: 1.8rem;
+    
+  }
+   @media (min-width:25.00em) {     
+     font-size: 2rem;
+     margin-left: 20px;
+  }
+
+  @media (min-width:37.500em) {
+    margin-left: 20px;
+    
+  }
+  @media(min-width:44rem) {
+    margin-left: 40px;
+          
+  }
+  @media(min-width:56rem) {
+    margin-left: 60px;
+    font-size: 2.2rem;
+  }
+
+  @media(min-width:61.93em) {
+    margin-left: 80px;
+  } 
+`
+const Contenedor = styled.nav`
+    position: absolute;
+    z-index: 2;
+    width:100%;
+   background: rgb(195,195,195);
+    background: linear-gradient(90deg, #1d1d1d 0%, #131313 100%);
+    border-bottom: 1px solid rgba(78, 78, 78, 0.5);
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    transition: all 0.5s ease-in-out;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.5);
    ${(props) =>
     props.isActive &&
     css`
@@ -30,47 +98,52 @@ const Contenedor = styled.nav`
         height: 100vh;
       }
     `}
+   
 
-
-     @media (min-width:20.00em) {     
-    
-    
+    @media (min-width:20.00em) {     
+      height: 15vh;
+      position:relative;
+      background-color: #000000;
+      
   }
   @media (min-width:37.500em) {
     
     
   }
   @media(min-width:44rem) {
-   height:100px;
-    
-         
+   
+
+  }
+   @media(min-width:56rem) {
+     
   }
   @media(min-width:61.93em) {
-  
-  } 
+
+  }
 
 
-   `
+`
 const SeccionesUl = styled.ul`
     position: fixed;
     width: 100%;
     height: 0vh;
-    top: 100px;
-    background-color: rgba(0,0,0,.95);
-    text-align: center;
-    transition: all .5s;
+    background-color: rgba(0,0,0,.9);
+    transition: all .3s ease-in-out;
     margin: 0;
     padding: 0;
     z-index: 10;
-    @media (min-width:20.00em) {     
-    
-    
+ @media (min-width:20.00em) {     
+    top: 15vh;
   }
   @media (min-width:37.500em) {
-    
+   
     
   }
   @media(min-width:44rem) {
+     
+  }
+
+@media(min-width:56rem) {
    position: relative;
    height: 100px;
    top: 0;
@@ -79,48 +152,58 @@ const SeccionesUl = styled.ul`
    margin-right: 10px;
    background-color: transparent;
     
-         
+
   }
+
   @media(min-width:61.93em) {
   
   } 
    
 `
 const BarBtn = styled.label`
-    font-size: 25px;
-    color: #858585;
-    margin-right: 20px;
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 25%;
-    background-color: rgba(247, 247, 247, 0.5);
-
-    :hover{
-        background-color: transparent;
-        transition: all .3s;
-    }
-    @media (min-width:20.00em) {     
-    margin-right: 20px;
+  margin-right:25px;
+  color: #ffc0cb;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border-radius: 10%;
+  :hover{
+    background-color: transparent;
+    transform: scale(1.2);
+    transition: all .4s ease-in-out;
+    border: 1px solid wheat;
+  }
+   
+  @media (min-width:20.00em) {     
+      font-size: 1.6rem;
     
   }
+   @media (min-width:25.00em) {     
+     margin-right:40px;
+    
+  }
+
   @media (min-width:37.500em) {
-    margin-right: 70px;
+    margin-right:60px;
     
   }
   @media(min-width:44rem) {
-    display: none;
-    
-         
+    margin-right:80px;
+          
   }
+  @media(min-width:56rem) {
+  display: none;       
+  }
+
   @media(min-width:61.93em) {
-  
+    
   } 
 `
-
-
 const StyledLi = styled.li`
     z-index: 10;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     display: block;
     line-height: 30px;
     margin: 50px 0;
@@ -132,8 +215,7 @@ const StyledLi = styled.li`
         `
   }
 
-     @media (min-width:20.00em) {     
-    
+  @media (min-width:20.00em) {       
     
   }
   @media (min-width:37.500em) {
@@ -141,15 +223,19 @@ const StyledLi = styled.li`
     
   }
   @media(min-width:44rem) {
-   display: inline-block;
+  
+    
+         
+  }
+  @media (min-width:56rem) {
+     display: inline-block;
    line-height:100px;
    margin:0 10px;
    transition:none;
     
-         
   }
   @media(min-width:61.93em) {
-    margin:0 25px;
+    margin:0 20px;
     
   
   } 
@@ -157,100 +243,50 @@ const StyledLi = styled.li`
 
 
 
-const StyledLink = styled.a`
-    color: #fff;
-    font-size: 16px;
-    text-transform: uppercase;
-    font-weight: 600;
-    transition: all .3s;
-    letter-spacing: 4px;
 
-
-    ${props =>
-    props.activo &&
-    css`
-      color: #3d3c3c;
-      
-    `}
-
-    :hover{
-
-        color: #3d3c3c;
-    }
-
-     @media (min-width:20.00em) {     
-    
-    
-  }
-  @media (min-width:37.500em) {
-    
-    
-  }
-  @media(min-width:44rem) {
-    /* color: #505050 ; */
-   font-size:15px;
-   ${props =>
-    props.activo &&
-    css`
-      display: none;
-      
-    `}
-   
-    
-    
-         
-  }
-  @media(min-width:61.93em) {
-  
-  } 
-`
-
-const StyledTitulos = styled.h1`
-    width: 140px;
-    margin-left: 20px;
-    font-size: 2.4rem;
-    text-align: center;
-    font-family: monospace;
-  @media (min-width:20.00em) {     
-    
-    
-  }
-  @media (min-width:37.500em) {
-    
-    
-  }
-  @media(min-width:44rem) {
-        margin-left: 20px;
-    
-         
-  }
-  @media(min-width:61.93em) {
-    margin-left: 60px;
-  }  
-    
-`
 const Navbar = () => {
-
+  const navigate = useNavigate();
   const [isActive, setIsActive] = useState(false);
+  const location = useLocation();
+  const [activeSection, setActiveSection] = useState("");
+  const cambiaRuta = (path) => {
+    navigate(path);
+  }
 
   const toggleMenu = () => {
     setIsActive(!isActive);
   };
 
+  React.useEffect(() => {
+    const path = location.pathname;
+    if (path === "/") {
+      setActiveSection("inicio");
+    } else if (path === "/Catalogo") {
+      setActiveSection("Catalogo");
+    } else if (path === "/Talleres") {
+      setActiveSection("Talleres");
+    } else if (path === "/Social") {
+      setActiveSection("Social");
+    }
+  }, [location]);
+
+
   return (<>
     <Contenedor isActive={isActive}>
 
-      <StyledTitulos>bonifacia.</StyledTitulos>
-      {/* <SCheck type="checkbox" id="check" /> */}
+      <StyledTitulos> Bonifacia.</StyledTitulos>
+
+
       <BarBtn className="bar-btn" onClick={toggleMenu}>
         <FontAwesomeIcon icon={faBars} />
       </BarBtn>
+
       <SeccionesUl>
-        <StyledLi isActive={isActive}><StyledLink href="#" activo> Inicio </StyledLink></StyledLi>
-        <StyledLi isActive={isActive}><StyledLink href="#">About Us</StyledLink></StyledLi>
-        <StyledLi isActive={isActive}><StyledLink href="#">Catálogo</StyledLink></StyledLi>
-        <StyledLi isActive={isActive}><StyledLink href="#">Talleres</StyledLink></StyledLi>
-        <StyledLi isActive={isActive}> <StyledLink href="#">Contacto</StyledLink></StyledLi>
+        <StyledLi isActive={isActive}><StyledLink onClick={() => cambiaRuta('/')} active={activeSection === "inicio"} > Inicio </StyledLink></StyledLi>
+        <StyledLi isActive={isActive}><StyledLink onClick={() => cambiaRuta('/videos')} active={activeSection === "Catalogo"}>Catalogo</StyledLink></StyledLi>
+        <StyledLi isActive={isActive}><StyledLink onClick={() => cambiaRuta('/fotografias')} active={activeSection === "Talleres"}>Talleres</StyledLink></StyledLi>
+        <StyledLi isActive={isActive}><StyledLink onClick={() => cambiaRuta('/fotografias')} active={activeSection === "Talleres"}>Carrito</StyledLink></StyledLi>
+        <StyledLi isActive={isActive}> <StyledLink onClick={() => cambiaRuta('/contacto')} active={activeSection === "Social"}>Social</StyledLink></StyledLi>
       </SeccionesUl>
     </Contenedor>
 
